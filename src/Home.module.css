@@ -1,0 +1,5 @@
+.home {
+    display: grid;
+    grid-template-columns: 1fr .6fr;
+    padding: 1.5rem;
+}
