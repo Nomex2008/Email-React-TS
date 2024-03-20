@@ -1,5 +1,23 @@
 {
-    "emails": [
-      {"text": "a text"}
-    ]
-  }
+  "emails": [
+    {
+      "text": "a text"
+    },
+    {
+      "id": "ff07",
+      "text": "<u><i><b>Hi!</b></i></u>"
+    },
+    {
+      "id": "cd95",
+      "text": "Enter email!"
+    },
+    {
+      "id": "eb45",
+      "text": "asd"
+    },
+    {
+      "id": "0dab",
+      "text": "<u><i><b>Bye!</b></i></u>"
+    }
+  ]
+}

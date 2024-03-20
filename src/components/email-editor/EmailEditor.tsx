@@ -3,15 +3,27 @@ import parse  from 'html-react-parser'
 import { useRef, useState } from 'react'
 import { ApplyStyle, TStyle } from './apply-style'
 import styles from './EmailEditor.module.scss'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { emailService } from '../../services/email.service'
 
 export function EmailEditor() {
-  const [text,setText] = useState(`Hey, Alex
-  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dignissimos accusamus reiciendis tempore repellendus veritatis sapiente voluptate ratione distinctio assumenda at.`)
+  const [text,setText] = useState(`Enter email!`)
   
   const [selectionStart,setSelectionStart] = useState(0)
   const [selectionEnd,setSelectionEnd] = useState(0)
 
   const textRef = useRef<HTMLTextAreaElement | null>(null)
+
+  const queryClient = useQueryClient()
+
+  const {mutate, isPending} = useMutation({
+    mutationKey:['create email'],
+    mutationFn: () => emailService.sendEmail(text),
+    onSuccess() {
+      setText(''),
+      queryClient.refetchQueries({queryKey: ['email list'],})
+    }
+  })
 
   const updateSelection = () => {
     if(!textRef.current) return
@@ -59,7 +71,7 @@ export function EmailEditor() {
               <button><Italic size={17} onClick={() => appplyFormat('italic')}/></button>
               <button><Underline size={17} onClick={() => appplyFormat('underline')}/></button>
           </div>
-          <button>Send now</button>
+          <button disabled={isPending} onClick={() => mutate()}>Send now</button>
         </div>
 
       </div>
