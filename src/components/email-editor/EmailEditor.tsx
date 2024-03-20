@@ -1,4 +1,3 @@
-import { prepend } from 'domutils'
 import { Bold, Eraser, Italic, Underline } from 'lucide-react'
 import parse  from 'html-react-parser'
 import { useRef, useState } from 'react'
