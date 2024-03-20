@@ -4,10 +4,21 @@
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid #2e2e2e;
+
+}
+.preview {
+    margin-bottom: 1rem;
+    padding: 1.2rem;
 }
 .editor {
     padding-bottom: 1.5rem;
     padding: 1.2rem;
+    width: calc(100% - 2.4rem);
+    min-height: 160px;
+    border: none;
+    outline: none;
+    background: transparent;
+    resize: none;
 }
 .actions {
     background-color: rgba(225,225,225,0.05);
@@ -50,5 +61,5 @@
       }
 }
 .read-the-docs {
-color: #888;
+    color: #888;
 }
