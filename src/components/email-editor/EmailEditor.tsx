@@ -5,15 +5,10 @@ import { ApplyStyle, TStyle } from './apply-style'
 import styles from './EmailEditor.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { emailService } from '../../services/email.service'
+import { useEditor } from './useEditor'
 
 export function EmailEditor() {
-  const [text,setText] = useState(`Enter email!`)
-  
-  const [selectionStart,setSelectionStart] = useState(0)
-  const [selectionEnd,setSelectionEnd] = useState(0)
-
-  const textRef = useRef<HTMLTextAreaElement | null>(null)
-
+  const {text,appplyFormat,updateSelection,textRef,setText} = useEditor()
   const queryClient = useQueryClient()
 
   const {mutate, isPending} = useMutation({
@@ -25,25 +20,6 @@ export function EmailEditor() {
     }
   })
 
-  const updateSelection = () => {
-    if(!textRef.current) return
-    setSelectionStart(textRef.current.selectionStart)
-    setSelectionEnd(textRef.current.selectionEnd)
-  }
-
-  const appplyFormat = (type: TStyle) => {
-    const selectedText = text.substring(selectionStart,selectionEnd)
-
-    if (!selectedText) return
-
-    const before = text.substring(0,selectionStart)
-
-    const after = text.substring(selectionEnd)
-
-    setText(before + ApplyStyle(type, selectedText) + after)
-
-    //console.log(selectedText)
-  }
 
   return (
     <div>

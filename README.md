@@ -1,5 +1,7 @@
 # React + TypeScript + Vite
 
+for start go npm run dev and npx json-server db.json also you nedd to have node.js in your PC)
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:

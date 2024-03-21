@@ -1,15 +1,12 @@
 {
   "emails": [
     {
-      "text": "a text"
+      "text": "a text",
+      "id": "a631"
     },
     {
       "id": "ff07",
       "text": "<u><i><b>Hi!</b></i></u>"
-    },
-    {
-      "id": "cd95",
-      "text": "Enter email!"
     },
     {
       "id": "eb45",
